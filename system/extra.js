@@ -308,6 +308,30 @@ Socket = (...args) => {
          quoted
       })
    }
+   
+   client.sendPreview = async (jid, img, source, title, text = "", quoted, options) {
+                return conn.sendMessage(
+                    jid,
+                    {
+                        text: text,
+                        contextInfo: {
+                            externalAdReply: {
+                                title: title,
+                                body: "",
+                                thumbnailUrl: img,
+                                sourceUrl: source,
+                                mediaType: 1,
+                                renderLargerThumbnail: true,
+                                ...options
+                            }
+                        }
+                    },
+                    {
+                        quoted,
+                        ...options
+                    }
+                );
+            }
 
    client.sendFile = async (jid, url, name, caption = '', quoted, opts, options) => {
       const {
