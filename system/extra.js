@@ -309,7 +309,7 @@ Socket = (...args) => {
       })
    }
    
-   client.sendPreview = async (jid, img, source, title, text = "", quoted, options) {
+   client.sendPreview = async (jid, img, source, title, text = "", quoted, options) => {
                 return conn.sendMessage(
                     jid,
                     {
